@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sale_configs",
+  "info": {
+    "singularName": "sale-config",
+    "pluralName": "sale-configs",
+    "displayName": "Sale Config",
+    "description": "Sales configuration for marketing promotions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "saleId": {
+      "type": "uid",
+      "required": true,
+      "unique": true
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "start_timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "end_timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "style": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sale.style",
+      "required": true
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": [
+        "no_paid_plan_users",
+        "trial_users",
+        "standard_users",
+        "all_users"
+      ],
+      "required": true,
+      "multiple": true
+    },
+    "pricing_treatment": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sale.pricing-treatment",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_sale_pricing_treatments",
+  "info": {
+    "displayName": "Pricing Treatment",
+    "icon": "tag"
+  },
+  "options": {},
+  "attributes": {
+    "standard_monthly": {
+      "type": "enumeration",
+      "enum": ["normal", "10pct_off", "20pct_off", "30pct_off", "50pct_off", "hidden"],
+      "default": "normal"
+    },
+    "standard_yearly": {
+      "type": "enumeration",
+      "enum": ["normal", "10pct_off", "20pct_off", "30pct_off", "50pct_off", "hidden"],
+      "default": "normal"
+    },
+    "ea_monthly": {
+      "type": "enumeration",
+      "enum": ["normal", "10pct_off", "20pct_off", "30pct_off", "50pct_off", "hidden"],
+      "default": "normal"
+    },
+    "ea_yearly": {
+      "type": "enumeration",
+      "enum": ["normal", "10pct_off", "20pct_off", "30pct_off", "50pct_off", "hidden"],
+      "default": "normal"
+    },
+    "lifetime": {
+      "type": "enumeration",
+      "enum": ["normal", "10pct_off", "20pct_off", "30pct_off", "50pct_off", "hidden"],
+      "default": "normal"
+    },
+    "free_trial": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

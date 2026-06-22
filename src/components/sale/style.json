@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_sale_styles",
+  "info": {
+    "displayName": "Style",
+    "icon": "paint-brush"
+  },
+  "options": {},
+  "attributes": {
+    "header_text_en": {
+      "type": "string",
+      "required": true
+    },
+    "header_text_ja": {
+      "type": "string"
+    },
+    "header_text_es": {
+      "type": "string"
+    },
+    "popup_delay_seconds": {
+      "type": "integer",
+      "default": 5
+    },
+    "max_popups_per_user_per_day": {
+      "type": "decimal"
+    },
+    "description_en": {
+      "type": "text"
+    },
+    "description_ja": {
+      "type": "text"
+    },
+    "description_es": {
+      "type": "text"
+    },
+    "promo_code": {
+      "type": "string"
+    },
+    "bg_image": {
+      "type": "string"
+    },
+    "fg_image": {
+      "type": "string"
+    },
+    "bg_image_mobile": {
+      "type": "string"
+    },
+    "fg_image_mobile": {
+      "type": "string"
+    }
+  }
+}
