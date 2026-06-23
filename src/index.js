@@ -8,7 +8,31 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }) {
+    strapi.db.lifecycles.subscribe({
+      models: ['plugin::upload.file'],
+      beforeCreate(event) {
+        const { data } = event.params;
+        if (data.name) {
+          data.name = data.name.replace(/\s+/g, '_');
+        }
+        if (data.url) {
+          const u = new URL(data.url);
+          u.pathname = u.pathname.split('/').map(s => encodeURIComponent(decodeURIComponent(s))).join('/');
+          data.url = u.toString();
+        }
+        if (data.formats) {
+          for (const format of Object.values(data.formats)) {
+            if (format.url) {
+              const u = new URL(format.url);
+              u.pathname = u.pathname.split('/').map(s => encodeURIComponent(decodeURIComponent(s))).join('/');
+              format.url = u.toString();
+            }
+          }
+        }
+      },
+    });
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
