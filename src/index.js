@@ -9,6 +9,25 @@ module.exports = {
    * This gives you an opportunity to extend code.
    */
   register({ strapi }) {
+    const bucketName = process.env.GCS_BUCKET_NAME;
+    const cdnBaseUrl = process.env.CDN_BASE_URL;
+    const serviceAccountRaw = process.env.GCS_SERVICE_ACCOUNT;
+    let serviceAccountParsed = false;
+    let serviceAccountError = null;
+    try {
+      if (serviceAccountRaw) {
+        JSON.parse(serviceAccountRaw);
+        serviceAccountParsed = true;
+      }
+    } catch (e) {
+      serviceAccountError = e.message;
+    }
+    strapi.log.info('[GCS ENV CHECK] GCS_BUCKET_NAME:', bucketName || '(not set)');
+    strapi.log.info('[GCS ENV CHECK] CDN_BASE_URL:', cdnBaseUrl || '(not set)');
+    strapi.log.info('[GCS ENV CHECK] GCS_SERVICE_ACCOUNT set:', !!serviceAccountRaw);
+    strapi.log.info('[GCS ENV CHECK] GCS_SERVICE_ACCOUNT valid JSON:', serviceAccountParsed);
+    if (serviceAccountError) strapi.log.error('[GCS ENV CHECK] GCS_SERVICE_ACCOUNT parse error:', serviceAccountError);
+
     strapi.db.lifecycles.subscribe({
       models: ['plugin::upload.file'],
       beforeCreate(event) {
